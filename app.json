@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/carManage/carManage",
+    "pages/reservation/reservation",
+    "pages/reservationList/reservationList",
+    "pages/parkingStatus/parkingStatus",
+    "pages/profile/profile",
+    "pages/feedback/feedback"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3A7FFF",
+    "navigationBarTitleText": "车库出入预约",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#3A7FFF",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_selected.png"
+      },
+      {
+        "pagePath": "pages/reservationList/reservationList",
+        "text": "预约记录",
+        "iconPath": "images/record.png",
+        "selectedIconPath": "images/record_selected.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile_selected.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于导航到停车场"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ]
+}

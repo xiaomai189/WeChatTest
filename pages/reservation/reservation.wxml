@@ -1,0 +1,70 @@
+<!--pages/reservation/reservation.wxml-->
+<view class="container">
+  <!-- 预约类型选择 -->
+  <view class="type-selector">
+    <view class="type-item {{reservationType === 'in' ? 'active' : ''}}" bindtap="switchType" data-type="in">
+      <image class="type-icon" src="/images/in.png" mode="aspectFit"></image>
+      <text>预约入库</text>
+    </view>
+    <view class="type-item {{reservationType === 'out' ? 'active' : ''}}" bindtap="switchType" data-type="out">
+      <image class="type-icon" src="/images/out.png" mode="aspectFit"></image>
+      <text>预约出库</text>
+    </view>
+  </view>
+
+  <!-- 车辆选择 -->
+  <view class="section">
+    <view class="section-title">选择车辆</view>
+    <view class="car-selector" bindtap="selectCar">
+      <block wx:if="{{selectedCar}}">
+        <view class="car-info">
+          <text class="plate-number">{{selectedCar.plateNumber}}</text>
+          <text class="car-model">{{selectedCar.model}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <text class="placeholder">请选择车辆</text>
+      </block>
+      <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 日期选择 -->
+  <view class="section">
+    <view class="section-title">选择日期</view>
+    <view class="date-picker">
+      <picker mode="date" value="{{selectedDate}}" start="{{minDate}}" end="{{maxDate}}" bindchange="onDateChange">
+        <view class="picker-content">
+          <text>{{selectedDate || '请选择日期'}}</text>
+          <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 时间选择 -->
+  <view class="section">
+    <view class="section-title">选择时间段</view>
+    <view class="time-slots">
+      <block wx:for="{{timeSlots}}" wx:key="time">
+        <view class="time-slot {{item.selected ? 'selected' : ''}} {{item.disabled ? 'disabled' : ''}}"
+              bindtap="selectTimeSlot" data-time="{{item.time}}" data-index="{{index}}">
+          <text class="time">{{item.time}}</text>
+          <text class="status">{{item.disabled ? '已约满' : (item.selected ? '已选择' : '可预约')}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 备注信息 -->
+  <view class="section">
+    <view class="section-title">备注信息（选填）</view>
+    <textarea class="remark" placeholder="请输入备注信息" value="{{remark}}" bindinput="onRemarkInput" maxlength="100"></textarea>
+    <text class="word-count">{{remarkLength}}/100</text>
+  </view>
+
+  <!-- 预约按钮 -->
+  <view class="bottom-button">
+    <button class="submit-btn" bindtap="submitReservation" disabled="{{!canSubmit}}">确认预约</button>
+  </view>
+</view>

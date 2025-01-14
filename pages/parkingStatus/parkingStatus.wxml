@@ -1,0 +1,102 @@
+<!--pages/parkingStatus/parkingStatus.wxml-->
+<view class="container">
+  <!-- 楼层选择器 -->
+  <view class="floor-selector">
+    <scroll-view scroll-x="true" class="floor-list">
+      <block wx:for="{{floors}}" wx:key="floor">
+        <view class="floor-item {{currentFloor === item.floor ? 'active' : ''}}"
+              bindtap="switchFloor" data-floor="{{item.floor}}">
+          <text class="floor-name">{{item.floor}}层</text>
+          <text class="spot-count">{{item.availableSpots}}/{{item.totalSpots}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!-- 状态图例 -->
+  <view class="legend">
+    <view class="legend-item">
+      <view class="legend-color available"></view>
+      <text>空闲</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color occupied"></view>
+      <text>已占用</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color reserved"></view>
+      <text>已预约</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color disabled"></view>
+      <text>维护中</text>
+    </view>
+  </view>
+
+  <!-- 车位布局图 -->
+  <scroll-view scroll-y="true" class="parking-layout">
+    <view class="layout-container">
+      <!-- 车位网格 -->
+      <view class="parking-grid">
+        <block wx:for="{{parkingSpots}}" wx:key="id">
+          <view class="parking-spot {{item.status}}" bindtap="showSpotDetail" data-spot="{{item}}">
+            <text class="spot-number">{{item.number}}</text>
+            <text class="spot-info" wx:if="{{item.status === 'occupied'}}">{{item.plateNumber}}</text>
+            <text class="spot-info" wx:if="{{item.status === 'reserved'}}">{{item.reserveTime}}</text>
+          </view>
+        </block>
+      </view>
+
+      <!-- 通道和其他设施标识 -->
+      <view class="facilities">
+        <view class="entrance">入口</view>
+        <view class="exit">出口</view>
+        <view class="elevator">电梯</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 车位详情弹窗 -->
+  <view class="spot-detail-modal" wx:if="{{showSpotDetail}}">
+    <view class="modal-mask" bindtap="hideSpotDetail"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">车位详情</text>
+        <view class="close-btn" bindtap="hideSpotDetail">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="detail-item">
+          <text class="label">车位号</text>
+          <text class="value">{{selectedSpot.number}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">状态</text>
+          <text class="value">{{selectedSpot.statusText}}</text>
+        </view>
+        <block wx:if="{{selectedSpot.status === 'occupied'}}">
+          <view class="detail-item">
+            <text class="label">车牌号</text>
+            <text class="value">{{selectedSpot.plateNumber}}</text>
+          </view>
+          <view class="detail-item">
+            <text class="label">入场时间</text>
+            <text class="value">{{selectedSpot.enterTime}}</text>
+          </view>
+        </block>
+        <block wx:if="{{selectedSpot.status === 'reserved'}}">
+          <view class="detail-item">
+            <text class="label">预约时间</text>
+            <text class="value">{{selectedSpot.reserveTime}}</text>
+          </view>
+          <view class="detail-item">
+            <text class="label">车牌号</text>
+            <text class="value">{{selectedSpot.plateNumber}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="modal-footer" wx:if="{{selectedSpot.status === 'available'}}">
+        <button class="reserve-btn" bindtap="reserveSpot">预约此车位</button>
+      </view>
+    </view>
+  </view>
+</view>

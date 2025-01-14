@@ -1,0 +1,63 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="title">智慧立体车库</text>
+    <text class="subtitle">便捷停车 智能管理</text>
+  </view>
+
+  <view class="login-form">
+    <view class="form-item">
+      <image class="icon" src="/images/phone.png" mode="aspectFit"></image>
+      <input class="input" type="number" maxlength="11" placeholder="请输入手机号" value="{{phone}}" bindinput="onPhoneInput"/>
+    </view>
+    <block wx:if="{{loginType === 'password'}}">
+      <view class="form-item">
+        <image class="icon" src="/images/password.png" mode="aspectFit"></image>
+        <input class="input" password="true" placeholder="请输入密码" value="{{password}}" bindinput="onPasswordInput"/>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="form-item">
+        <image class="icon" src="/images/verify.png" mode="aspectFit"></image>
+        <input class="input verify" type="number" maxlength="6" placeholder="请输入验证码" value="{{verifyCode}}" bindinput="onVerifyCodeInput"/>
+        <view class="verify-btn {{canSendCode ? '' : 'disabled'}}" bindtap="sendVerifyCode">
+          {{countDown > 0 ? countDown + 's' : '获取验证码'}}
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="actions">
+    <button class="login-btn" bindtap="handleLogin" disabled="{{!canLogin}}">登录</button>
+    <view class="switch-type" bindtap="switchLoginType">
+      <text>{{loginType === 'password' ? '验证码登录' : '密码登录'}}</text>
+    </view>
+  </view>
+
+  <view class="agreement">
+    <checkbox-group bindchange="onAgreementChange">
+      <label class="agreement-label">
+        <checkbox value="agree" checked="{{agreed}}"/>
+        <text class="agreement-text">登录即代表同意</text>
+        <text class="link" bindtap="viewUserAgreement">《用户协议》</text>
+        <text class="agreement-text">和</text>
+        <text class="link" bindtap="viewPrivacyPolicy">《隐私政策》</text>
+      </label>
+    </checkbox-group>
+  </view>
+
+  <view class="other-login">
+    <view class="divider">
+      <view class="line"></view>
+      <text>其他登录方式</text>
+      <view class="line"></view>
+    </view>
+    <view class="login-methods">
+      <button class="wechat-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image src="/images/wechat.png" mode="aspectFit"></image>
+        <text>微信登录</text>
+      </button>
+    </view>
+  </view>
+</view>

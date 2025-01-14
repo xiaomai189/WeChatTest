@@ -1,0 +1,288 @@
+/* pages/profile/profile.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #F6F6F6;
+  padding-bottom: 40rpx;
+}
+
+/* 用户信息卡片样式 */
+.user-card {
+  background: linear-gradient(135deg, #2B5CFF 0%, #4C7FFF 100%);
+  padding: 40rpx 30rpx;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 30rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.phone {
+  font-size: 28rpx;
+  opacity: 0.8;
+}
+
+.login-tip {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.login-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.5);
+  color: white;
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 通用section样式 */
+.section {
+  background-color: white;
+  border-radius: 20rpx;
+  margin: 20rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-header .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-header .more {
+  font-size: 24rpx;
+  color: #2B5CFF;
+}
+
+/* 车辆列表样式 */
+.car-list {
+  width: 100%;
+}
+
+.car-scroll {
+  display: flex;
+  padding: 10rpx 0;
+}
+
+.car-item {
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+  padding: 20rpx 30rpx;
+  margin-right: 20rpx;
+  min-width: 200rpx;
+}
+
+.car-item .plate-number {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.car-item .car-model {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.empty-car {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.empty-car text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.add-car {
+  color: #2B5CFF;
+  font-size: 28rpx;
+}
+
+/* 预约记录样式 */
+.reservation-item {
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.reservation-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.reservation-info {
+  display: flex;
+  align-items: center;
+}
+
+.type-tag {
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  margin-right: 15rpx;
+}
+
+.type-tag.in {
+  background-color: #E6F7FF;
+  color: #2B5CFF;
+}
+
+.type-tag.out {
+  background-color: #FFF7E6;
+  color: #FA8C16;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.status.pending {
+  background-color: #FFF7E6;
+  color: #FA8C16;
+}
+
+.status.confirmed {
+  background-color: #E6F7FF;
+  color: #2B5CFF;
+}
+
+.status.completed {
+  background-color: #F6FFED;
+  color: #52C41A;
+}
+
+.status.cancelled {
+  background-color: #F5F5F5;
+  color: #999;
+}
+
+.reservation-detail {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.reservation-detail text {
+  margin-right: 20rpx;
+}
+
+.reservation-actions {
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.action-btn.cancel {
+  background-color: #FFF1F0;
+  color: #FF4D4F;
+  border: 2rpx solid #FF4D4F;
+}
+
+/* 功能列表样式 */
+.function-list {
+  background-color: white;
+  margin: 20rpx;
+  border-radius: 20rpx;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.function-item:last-child {
+  border-bottom: none;
+}
+
+.function-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.function-item text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+button.function-item {
+  width: 100%;
+  background: none;
+  font-weight: normal;
+  margin: 0;
+  padding: 30rpx;
+  text-align: left;
+  border-radius: 0;
+}
+
+button.function-item::after {
+  border: none;
+}
+
+/* 退出登录按钮样式 */
+.logout-section {
+  margin: 40rpx 20rpx;
+}
+
+.logout-btn {
+  background-color: white;
+  color: #FF4D4F;
+  font-size: 32rpx;
+  border-radius: 45rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}

@@ -1,0 +1,200 @@
+/* pages/reservation/reservation.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #F6F6F6;
+  min-height: 100vh;
+}
+
+/* 预约类型选择器样式 */
+.type-selector {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.type-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  border-radius: 15rpx;
+}
+
+.type-item.active {
+  background-color: #E6F7FF;
+}
+
+.type-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.type-item text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.type-item.active text {
+  color: #2B5CFF;
+}
+
+/* 通用section样式 */
+.section {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 车辆选择器样式 */
+.car-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.plate-number {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.car-model {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 5rpx;
+}
+
+.placeholder {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 日期选择器样式 */
+.date-picker {
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+}
+
+.picker-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.picker-content text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 时间段选择样式 */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.time-slot {
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-slot.selected {
+  background-color: #E6F7FF;
+  border: 2rpx solid #2B5CFF;
+}
+
+.time-slot.disabled {
+  opacity: 0.5;
+}
+
+.time-slot .time {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.time-slot .status {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.time-slot.selected .status {
+  color: #2B5CFF;
+}
+
+/* 备注输入框样式 */
+.remark {
+  width: 100%;
+  height: 160rpx;
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.word-count {
+  font-size: 24rpx;
+  color: #999;
+  text-align: right;
+  display: block;
+}
+
+/* 底部按钮样式 */
+.bottom-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background-color: white;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #2B5CFF 0%, #4C7FFF 100%);
+  color: white;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.submit-btn[disabled] {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  opacity: 0.6;
+}

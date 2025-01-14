@@ -1,0 +1,73 @@
+<view class="container">
+  <!-- 反馈类型选择 -->
+  <view class="section">
+    <text class="section-title">反馈类型</text>
+    <view class="type-list">
+      <view class="type-item {{currentType === 'bug' ? 'active' : ''}}" 
+            bindtap="switchType" data-type="bug">
+        <image class="type-icon" src="/images/bug.png" mode="aspectFit"></image>
+        <text>功能异常</text>
+      </view>
+      <view class="type-item {{currentType === 'suggestion' ? 'active' : ''}}" 
+            bindtap="switchType" data-type="suggestion">
+        <image class="type-icon" src="/images/suggestion.png" mode="aspectFit"></image>
+        <text>功能建议</text>
+      </view>
+      <view class="type-item {{currentType === 'complaint' ? 'active' : ''}}" 
+            bindtap="switchType" data-type="complaint">
+        <image class="type-icon" src="/images/complaint.png" mode="aspectFit"></image>
+        <text>投诉举报</text>
+      </view>
+      <view class="type-item {{currentType === 'other' ? 'active' : ''}}" 
+            bindtap="switchType" data-type="other">
+        <image class="type-icon" src="/images/other.png" mode="aspectFit"></image>
+        <text>其他</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 反馈内容 -->
+  <view class="section">
+    <text class="section-title">反馈内容</text>
+    <view class="content-box">
+      <textarea class="content-input" 
+                placeholder="请详细描述您遇到的问题或建议..." 
+                maxlength="500" 
+                value="{{content}}"
+                bindinput="onContentInput"></textarea>
+      <view class="word-count">{{contentLength}}/500</view>
+    </view>
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="section">
+    <text class="section-title">图片（选填，最多4张）</text>
+    <view class="image-list">
+      <block wx:for="{{images}}" wx:key="*this">
+        <view class="image-item">
+          <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}"></image>
+          <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+        </view>
+      </block>
+      <view class="upload-btn" bindtap="chooseImage" wx:if="{{images.length < 4}}">
+        <image src="/images/upload.png" mode="aspectFit"></image>
+        <text>上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section">
+    <text class="section-title">联系方式（选填）</text>
+    <input class="contact-input" 
+           type="text" 
+           placeholder="请留下您的手机号或邮箱，方便我们联系您" 
+           value="{{contact}}"
+           bindinput="onContactInput"/>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="submitFeedback" disabled="{{!canSubmit}}">提交反馈</button>
+  </view>
+</view> 

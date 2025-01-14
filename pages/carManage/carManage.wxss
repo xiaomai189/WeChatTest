@@ -1,0 +1,298 @@
+/* pages/carManage/carManage.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #F6F6F6;
+  padding-bottom: 120rpx;
+}
+
+/* 车辆列表样式 */
+.car-list {
+  padding: 20rpx;
+}
+
+.car-item {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.car-item.default {
+  background: linear-gradient(135deg, #F6FFED 0%, #FFFFFF 100%);
+  border: 2rpx solid #52C41A;
+}
+
+.car-info {
+  flex: 1;
+}
+
+.main-info {
+  margin-bottom: 10rpx;
+}
+
+.plate-number {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+.car-model {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.sub-info {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.car-type, .car-color {
+  margin-right: 20rpx;
+}
+
+.car-status {
+  display: flex;
+  align-items: center;
+}
+
+.default-tag {
+  font-size: 24rpx;
+  color: #52C41A;
+  background-color: #F6FFED;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+}
+
+.select-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-state text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 底部按钮样式 */
+.bottom-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background-color: white;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #2B5CFF 0%, #4C7FFF 100%);
+  color: white;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+/* 弹窗样式 */
+.car-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 30rpx;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item .label {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.form-item .input {
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+}
+
+.form-item .picker {
+  background-color: #F8F8F8;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.picker text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.form-item.switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-footer {
+  margin-top: 30rpx;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #2B5CFF 0%, #4C7FFF 100%);
+  color: white;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.submit-btn[disabled] {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  opacity: 0.6;
+}
+
+/* 操作菜单样式 */
+.action-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.action-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.action-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.action-header {
+  padding: 30rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.selected-car {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.action-list {
+  padding: 0 30rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.action-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.action-item text {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.action-item.delete text {
+  color: #FF4D4F;
+}
+
+.action-cancel {
+  padding: 30rpx;
+  text-align: center;
+  color: #999;
+  font-size: 32rpx;
+  background-color: #F8F8F8;
+}

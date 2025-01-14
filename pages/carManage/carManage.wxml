@@ -1,0 +1,108 @@
+<!--pages/carManage/carManage.wxml-->
+<view class="container">
+  <!-- 车辆列表 -->
+  <view class="car-list" wx:if="{{cars.length > 0}}">
+    <block wx:for="{{cars}}" wx:key="id">
+      <view class="car-item {{item.isDefault ? 'default' : ''}}" bindtap="{{mode === 'select' ? 'selectCar' : 'showCarActions'}}" data-car="{{item}}">
+        <view class="car-info">
+          <view class="main-info">
+            <text class="plate-number">{{item.plateNumber}}</text>
+            <text class="car-model">{{item.model}}</text>
+          </view>
+          <view class="sub-info">
+            <text class="car-type">{{item.type}}</text>
+            <text class="car-color">{{item.color}}</text>
+          </view>
+        </view>
+        <view class="car-status">
+          <text class="default-tag" wx:if="{{item.isDefault}}">默认</text>
+          <image class="select-icon" wx:if="{{mode === 'select'}}" src="/images/{{item.selected ? 'selected' : 'unselect'}}.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image class="empty-icon" src="/images/empty-car.png" mode="aspectFit"></image>
+    <text>暂无车辆信息</text>
+  </view>
+
+  <!-- 添加车辆按钮 -->
+  <view class="bottom-button">
+    <button class="add-btn" bindtap="showAddCarModal">添加车辆</button>
+  </view>
+
+  <!-- 添加/编辑车辆弹窗 -->
+  <view class="car-modal" wx:if="{{showCarModal}}">
+    <view class="modal-mask" bindtap="hideCarModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">{{editingCar ? '编辑车辆' : '添加车辆'}}</text>
+        <view class="close-btn" bindtap="hideCarModal">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="form-item">
+          <text class="label">车牌号码</text>
+          <input class="input" type="text" value="{{carForm.plateNumber}}" placeholder="请输入车牌号码" bindinput="onPlateNumberInput"/>
+        </view>
+        <view class="form-item">
+          <text class="label">车辆品牌</text>
+          <picker mode="selector" range="{{carBrands}}" value="{{carForm.brandIndex}}" bindchange="onBrandChange">
+            <view class="picker">
+              <text>{{carForm.brandIndex > -1 ? carBrands[carForm.brandIndex] : '请选择车辆品牌'}}</text>
+              <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+            </view>
+          </picker>
+        </view>
+        <view class="form-item">
+          <text class="label">车型</text>
+          <input class="input" type="text" value="{{carForm.model}}" placeholder="请输入车型" bindinput="onModelInput"/>
+        </view>
+        <view class="form-item">
+          <text class="label">车辆颜色</text>
+          <picker mode="selector" range="{{carColors}}" value="{{carForm.colorIndex}}" bindchange="onColorChange">
+            <view class="picker">
+              <text>{{carForm.colorIndex > -1 ? carColors[carForm.colorIndex] : '请选择车辆颜色'}}</text>
+              <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+            </view>
+          </picker>
+        </view>
+        <view class="form-item switch">
+          <text class="label">设为默认车辆</text>
+          <switch checked="{{carForm.isDefault}}" bindchange="onDefaultChange"/>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="submit-btn" bindtap="submitCarForm" disabled="{{!canSubmit}}">确定</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 车辆操作菜单 -->
+  <view class="action-sheet" wx:if="{{showActionSheet}}">
+    <view class="action-mask" bindtap="hideActionSheet"></view>
+    <view class="action-content">
+      <view class="action-header">
+        <text class="selected-car">{{selectedCar.plateNumber}}</text>
+      </view>
+      <view class="action-list">
+        <view class="action-item" bindtap="editCar">
+          <image class="action-icon" src="/images/edit.png" mode="aspectFit"></image>
+          <text>编辑</text>
+        </view>
+        <view class="action-item" bindtap="setDefaultCar" wx:if="{{!selectedCar.isDefault}}">
+          <image class="action-icon" src="/images/default.png" mode="aspectFit"></image>
+          <text>设为默认</text>
+        </view>
+        <view class="action-item delete" bindtap="deleteCar">
+          <image class="action-icon" src="/images/delete.png" mode="aspectFit"></image>
+          <text>删除</text>
+        </view>
+      </view>
+      <view class="action-cancel" bindtap="hideActionSheet">
+        <text>取消</text>
+      </view>
+    </view>
+  </view>
+</view>

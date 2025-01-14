@@ -1,0 +1,78 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 顶部状态卡片 -->
+    <view class="status-card">
+      <view class="time">{{currentTime}}</view>
+      <view class="status-grid">
+        <view class="status-item">
+          <text class="number">{{totalSpots}}</text>
+          <text class="label">总车位</text>
+        </view>
+        <view class="status-item">
+          <text class="number available">{{availableSpots}}</text>
+          <text class="label">空闲车位</text>
+        </view>
+        <view class="status-item">
+          <text class="number reserved">{{reservedSpots}}</text>
+          <text class="label">已预约</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷操作按钮 -->
+    <view class="action-buttons">
+      <button class="action-btn in" bindtap="handleInReservation">
+        <image src="/images/in.png" mode="aspectFit"></image>
+        <text>预约入库</text>
+      </button>
+      <button class="action-btn out" bindtap="handleOutReservation">
+        <image src="/images/out.png" mode="aspectFit"></image>
+        <text>预约出库</text>
+      </button>
+    </view>
+
+    <!-- 最近预约记录 -->
+    <view class="recent-records">
+      <view class="section-header">
+        <text class="title">最近预约</text>
+        <text class="more" bindtap="viewAllReservations">查看全部</text>
+      </view>
+      <view class="record-list">
+        <view class="record-item {{item.status}}" wx:for="{{recentReservations}}" wx:key="id">
+          <view class="record-main">
+            <view class="plate-number">{{item.plateNumber}}</view>
+            <view class="record-info">
+              <text class="type">{{item.type}}</text>
+              <text class="time">{{item.date}} {{item.time}}</text>
+            </view>
+          </view>
+          <view class="status-tag">{{item.statusText}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷功能区 -->
+    <view class="quick-functions">
+      <view class="function-grid">
+        <view class="function-item" bindtap="navigateToCarManage">
+          <image src="/images/car.png" mode="aspectFit"></image>
+          <text>车辆管理</text>
+        </view>
+        <view class="function-item" bindtap="navigateToFeedback">
+          <image src="/images/feedback.png" mode="aspectFit"></image>
+          <text>问题反馈</text>
+        </view>
+        <view class="function-item" bindtap="navigateToGuide">
+          <image src="/images/guide.png" mode="aspectFit"></image>
+          <text>使用指南</text>
+        </view>
+        <view class="function-item" bindtap="contactService">
+          <image src="/images/service.png" mode="aspectFit"></image>
+          <text>联系客服</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

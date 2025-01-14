@@ -1,0 +1,78 @@
+<view class="container">
+  <!-- 状态筛选器 -->
+  <view class="filter-bar">
+    <scroll-view scroll-x="true" class="filter-scroll">
+      <view class="filter-list">
+        <view class="filter-item {{currentStatus === '' ? 'active' : ''}}" 
+              bindtap="switchStatus" data-status="">
+          <text>全部</text>
+        </view>
+        <view class="filter-item {{currentStatus === 'pending' ? 'active' : ''}}" 
+              bindtap="switchStatus" data-status="pending">
+          <text>待确认</text>
+        </view>
+        <view class="filter-item {{currentStatus === 'confirmed' ? 'active' : ''}}" 
+              bindtap="switchStatus" data-status="confirmed">
+          <text>已确认</text>
+        </view>
+        <view class="filter-item {{currentStatus === 'completed' ? 'active' : ''}}" 
+              bindtap="switchStatus" data-status="completed">
+          <text>已完成</text>
+        </view>
+        <view class="filter-item {{currentStatus === 'cancelled' ? 'active' : ''}}" 
+              bindtap="switchStatus" data-status="cancelled">
+          <text>已取消</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 预约列表 -->
+  <scroll-view scroll-y="true" class="reservation-list" bindscrolltolower="loadMore">
+    <block wx:if="{{reservations.length > 0}}">
+      <view class="list-content">
+        <block wx:for="{{reservations}}" wx:key="id">
+          <view class="reservation-item">
+            <view class="reservation-header">
+              <view class="reservation-info">
+                <text class="type-tag {{item.type === 'in' ? 'in' : 'out'}}">{{item.type === 'in' ? '入库' : '出库'}}</text>
+                <text class="plate-number">{{item.plateNumber}}</text>
+              </view>
+              <text class="status {{item.status}}">{{item.statusText}}</text>
+            </view>
+            <view class="reservation-body">
+              <view class="info-row">
+                <text class="label">预约时间</text>
+                <text class="value">{{item.date}} {{item.time}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">车位号</text>
+                <text class="value">{{item.spotNumber}}</text>
+              </view>
+              <view class="info-row" wx:if="{{item.remark}}">
+                <text class="label">备注</text>
+                <text class="value">{{item.remark}}</text>
+              </view>
+            </view>
+            <view class="reservation-footer" wx:if="{{item.status === 'pending'}}">
+              <button class="action-btn cancel" bindtap="cancelReservation" data-id="{{item.id}}">取消预约</button>
+            </view>
+          </view>
+        </block>
+        <!-- 加载更多 -->
+        <view class="loading-more" wx:if="{{hasMore}}">
+          <text>加载中...</text>
+        </view>
+        <view class="no-more" wx:else>
+          <text>没有更多了</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-state">
+        <image class="empty-icon" src="/images/empty-reservation.png" mode="aspectFit"></image>
+        <text>暂无预约记录</text>
+      </view>
+    </block>
+  </scroll-view>
+</view> 

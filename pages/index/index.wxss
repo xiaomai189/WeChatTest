@@ -1,0 +1,378 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  padding: 30rpx;
+  background-color: #F5F7FA;
+  min-height: 100vh;
+}
+
+/* 状态卡片样式 */
+.status-card {
+  background: linear-gradient(135deg, #3A7FFF 0%, #6AA1FF 100%);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  color: white;
+  box-shadow: 0 4rpx 20rpx rgba(58, 127, 255, 0.2);
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.status-header .title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.status-header .time {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.status-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-item .number {
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.status-item .label {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 快捷操作区样式 */
+.quick-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.action-item {
+  background-color: white;
+  border-radius: 15rpx;
+  width: 48%;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.action-text {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 最近预约样式 */
+.recent-reservations {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-header .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-header .more {
+  font-size: 24rpx;
+  color: #2B5CFF;
+}
+
+.reservation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.reservation-item:last-child {
+  border-bottom: none;
+}
+
+.plate-number {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.reservation-type {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.reservation-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservation-time .date {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.reservation-time .time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 10rpx;
+}
+
+.status.pending {
+  background-color: #FFF7E6;
+  color: #FA8C16;
+}
+
+.status.confirmed {
+  background-color: #E6F7FF;
+  color: #2B5CFF;
+}
+
+.status.completed {
+  background-color: #F6FFED;
+  color: #52C41A;
+}
+
+/* 温馨提示样式 */
+.notice {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+
+.notice-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.notice-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.time {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+}
+
+.status-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.status-item {
+  text-align: center;
+}
+
+.status-item .number {
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.status-item .label {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx 0;
+  gap: 30rpx;
+}
+
+.action-btn {
+  flex: 1;
+  height: 180rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: none;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-btn.in {
+  background: #E8F3FF;
+}
+
+.action-btn.out {
+  background: #FFF5E8;
+}
+
+.action-btn image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.action-btn text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 最近预约记录 */
+.recent-records {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.section-header .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-header .more {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #F8FAFC;
+  border-radius: 12rpx;
+}
+
+.record-main {
+  flex: 1;
+}
+
+.plate-number {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.record-info {
+  display: flex;
+  gap: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.status-tag {
+  font-size: 24rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+  background: #E8F3FF;
+  color: #3A7FFF;
+}
+
+.record-item.pending .status-tag {
+  background: #FFF5E8;
+  color: #FF9500;
+}
+
+.record-item.completed .status-tag {
+  background: #E8F8F3;
+  color: #00B578;
+}
+
+/* 快捷功能区 */
+.quick-functions {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+
+.function-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30rpx;
+}
+
+.function-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.function-item image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.function-item text {
+  font-size: 24rpx;
+  color: #666;
+}
